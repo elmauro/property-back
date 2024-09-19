@@ -27,7 +27,7 @@ namespace MC.PropertyService.API.Data.Repositories
         Task UpdatePropertyAsync(Property property);
 
         /// <summary>
-        /// Retrieves a paginated list of properties filtered by the given criteria. and the total product count.
+        /// Retrieves a paginated list of properties filtered by the given criteria. and the total property count.
         /// </summary>
         /// <param name="pageNumber">The page number to retrieve.</param>
         /// <param name="pageSize">The number of properties per page.</param>

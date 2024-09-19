@@ -36,7 +36,7 @@
     public class ActionDataResponseList<T> : ActionDataResponse<T>, IActionDataResponse<T>
     {
         // Pagination metadata
-        public int TotalProducts { get; set; }
+        public int TotalProperties { get; set; }
         public int CurrentPage { get; set; }
         public int PageSize { get; set; }
 
@@ -44,13 +44,13 @@
         /// Creates a new response that wraps the provided data along with pagination info.
         /// </summary>
         /// <param name="data">The data to be included in the response.</param>
-        /// <param name="totalProducts">Total number of products.</param>
+        /// <param name="totalProperties">Total number of properties.</param>
         /// <param name="currentPage">The current page.</param>
         /// <param name="pageSize">The page size.</param>
-        public ActionDataResponseList(T data, int totalProducts, int currentPage, int pageSize) : base(data)
+        public ActionDataResponseList(T data, int totalProperties, int currentPage, int pageSize) : base(data)
         {
             Data = data;
-            TotalProducts = totalProducts;
+            TotalProperties = totalProperties;
             CurrentPage = currentPage;
             PageSize = pageSize;
         }

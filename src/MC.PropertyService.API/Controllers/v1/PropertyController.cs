@@ -79,7 +79,7 @@ namespace MC.PropertyService.API.Controllers.v1
         /// Lists properties with optional filters.
         /// </summary>
         /// <param name="pageNumber">The page number to retrieve.</param>
-        /// <param name="pageSize">The number of products per page.</param>
+        /// <param name="pageSize">The number of properties per page.</param>
         /// <param name="filters">Filter criteria to apply.</param>
         /// <response code="200">Returns the list of properties.</response>
         /// <response code="404">No properties were found.</response>

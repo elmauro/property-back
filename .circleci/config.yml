@@ -12,10 +12,10 @@ jobs:
       - checkout
       - run:
           name: Restore dependencies
-          command: dotnet restore ~/MC.ProductService.sln
+          command: dotnet restore ~/MC.PropertyService.sln
       - run:
           name: Build
-          command: dotnet build ~/MC.ProductService.sln --no-restore
+          command: dotnet build ~/MC.PropertyService.sln --no-restore
 
   test:
     executor: dotnet-executor
@@ -23,10 +23,10 @@ jobs:
       - checkout
       - run:
           name: Restore dependencies
-          command: dotnet restore ./MC.ProductService.sln
+          command: dotnet restore ./MC.PropertyService.sln
       - run:
           name: Test
-          command: dotnet test ./MC.ProductService.sln --no-restore --no-build
+          command: dotnet test ./MC.PropertyService.sln --no-restore --no-build
 
   publish:
     executor: dotnet-executor
@@ -34,10 +34,10 @@ jobs:
       - checkout
       - run:
           name: Restore dependencies
-          command: dotnet restore ./MC.ProductService.sln
+          command: dotnet restore ./MC.PropertyService.sln
       - run:
           name: Publish
-          command: dotnet publish ./MC.ProductService.sln -c Release -o out
+          command: dotnet publish ./MC.PropertyService.sln -c Release -o out
 
   deploy:
     docker:

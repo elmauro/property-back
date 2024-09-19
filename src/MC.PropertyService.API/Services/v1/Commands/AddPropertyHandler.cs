@@ -14,16 +14,16 @@ namespace MC.PropertyService.API.Services.v1.Handlers
     /// </summary>
     public class AddPropertyHandler : HandlerBase<AddPropertyCommand>
     {
-        private readonly IPropertyRepository _productRepository;
+        private readonly IPropertyRepository _propertyRepository;
         private readonly IOwnerRepository _ownerRepository;
 
         public AddPropertyHandler(
-            IPropertyRepository productRepository,
+            IPropertyRepository propertyRepository,
             IOwnerRepository ownerRepository,
             IMapper mapper,
             ILogger<AddPropertyHandler> logger) : base(mapper, logger)
         {
-            _productRepository = productRepository;
+            _propertyRepository = propertyRepository;
             _ownerRepository = ownerRepository;
         }
 
@@ -47,7 +47,7 @@ namespace MC.PropertyService.API.Services.v1.Handlers
                 newProperty.CreatedBy = systemUser;
                 newProperty.LastUpdatedBy = systemUser;
 
-                await _productRepository.AddPropertyAsync(newProperty);
+                await _propertyRepository.AddPropertyAsync(newProperty);
 
                 var response = new ActionDataResponse<PropertyRequest>(request.Property);
                 return new CreatedAtActionResult(nameof(PropertyController.Create), null, new { propertyId = newProperty.PropertyId }, response);
