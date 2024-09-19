@@ -1,8 +1,8 @@
-# Product-Service API Documentation
+# Property-Service API Documentation
 
 ## Introduction
 
-This API helps manage product information for businesses. It makes it easier to add, update, and get data about products.
+This API helps manage properties information for businesses. It makes it easier to add, update, and get data about properties.
 
 In this document, we will talk about:
 
@@ -52,7 +52,7 @@ docker-compose -f compose.yml up --build -d property-postgres
 winpty docker exec -it property-postgres psql -U property -d property -f scripts/idempotent-migration.sql
 ```
 
-![image](https://github.com/elmauro/product-service/assets/9219845/25c8a155-0aee-47d1-87d9-e5d2b7edac4b)
+![image](https://github.com/user-attachments/assets/e9110029-5971-4774-b813-81ec260f1270)
 
 ## Starting the Service
 
@@ -64,55 +64,38 @@ You can start the service using Visual Studio 2022 or Docker Compose
 docker-compose -f compose.yml up --build -d property
 ```
 
-![image](https://github.com/elmauro/product-service/assets/9219845/b737f711-ecd1-4a4b-9d03-4590d132775e)
+![image](https://github.com/user-attachments/assets/b93b0c2c-8477-4eee-8d70-ae81cab5b199)
 
-## Using the Product Service API
+## Using the Property Service API
 
 **API Access**
 
 The API can be accessed locally at:
 
 ```sh
-http://localhost:56508/product/index.html
+http://localhost:56510/property/index.html
 ```
 
 The API is fully documented using Swagger, which provides a detailed overview of available endpoints, request models, and response statuses. Please review the Swagger documentation to validate response HTTP statuses and understand the expected behavior of the API
 
-![image](https://github.com/elmauro/product-service/assets/9219845/d76f5338-0a28-4627-a9bc-25eec308b6b4)
+![image](https://github.com/user-attachments/assets/7ab0239d-a9f8-4693-a325-f5bd39cbc307)
 
+## Authentication
 
-**Creating a Product**
+username: test
 
-To create a product, use the POST method with the desired parameters in the JSON object
+password: password
 
-![image](https://github.com/elmauro/product-service/assets/9219845/08e0e17d-5def-4df9-b94b-0f95befc9dec)
+![image](https://github.com/user-attachments/assets/7c2548b9-0fb1-4763-aedd-16e00820b3fd)
 
-Execute the request and the method will respond with information about the created product
 
 **Important!**
-The response includes the product ID in the location section of the response headers. You need the product ID to update and access product information.
+The response for POST methods includes the automatic ID created in the location section of the response headers. You need the ID to update and access information.
 
-![image](https://github.com/elmauro/product-service/assets/9219845/349ef59a-7b21-4e87-b163-56bc1c962704)
+Sample with the Property method POST
 
+![image](https://github.com/user-attachments/assets/c164e60a-e35e-4701-a733-d0b1ee0ee3ee)
 
-**Retrieving a Product**
-
-To retrieve product data, use the GET method with the productId parameter
-
-```sh
-http://localhost:56508/v1/Product?productId=c5f8e2e8-e4ed-4eef-8088-8d2684f4e71b
-```
-
-![image](https://github.com/elmauro/product-service/assets/9219845/dd68633f-82bb-4cd2-853c-5a5315f1470b)
-
-
-**Updating a Product**
-
-To update product details, use the PUT method with the new parameters in the JSON object
-
-![image](https://github.com/elmauro/product-service/assets/9219845/3e4b6dbd-92a3-4c88-aa51-dbff8622d21d)
-
-Execute, and then repeat the GET method to see the updated product information.
 
 ## Logs
 
@@ -122,21 +105,9 @@ You can view the logs from within the Docker container using the following comma
 docker logs [container_id]
 ```
 
-![image](https://github.com/elmauro/product-service/assets/9219845/ddc76ad8-facd-45ca-af64-5f464af6620b)
+![image](https://github.com/user-attachments/assets/7a5e8b0e-487f-4ac8-8ac0-bbec00fbd500)
 
-![image](https://github.com/elmauro/product-service/assets/9219845/0c46bcb0-1595-4e82-b22a-2f9c002927cd)
-
-
-
-## Mock Service
-
-Access the Mock Discount Service at the following URL:
-
-https://6680a0be56c2c76b495c7127.mockapi.io/v1/product
-
-The API returns data based on the first discount value provided in the query
-
-![image](https://github.com/elmauro/product-service/assets/9219845/7470de9f-3088-43dc-a9a5-deaf7a5df402)
+![image](https://github.com/user-attachments/assets/4769ba7a-7ce3-4506-a50d-bf2b6ba0b920)
 
 
 
