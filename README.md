@@ -42,6 +42,18 @@ Before you begin, ensure that your system meets the following prerequisites:
 git clone https://github.com/elmauro/property-service
 ```
 
+Create a network for the backend and frontend
+
+```sh
+docker network create property-network
+```
+
+Create a volume for the backend and frontend
+
+```sh
+docker volume create shared-assets
+```
+
 Use Docker Compose to launch the database
 
 ```sh
