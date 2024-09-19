@@ -39,14 +39,17 @@ Before you begin, ensure that your system meets the following prerequisites:
 
 **Clone the repository**
 ```sh
-git clone https://github.com/elmauro/product-service.git
+git clone https://github.com/elmauro/property-back.git
 ```
 
 Use Docker Compose to launch the database
 
 ```sh
-docker-compose -f compose.yml up --build -d product-postgres
-winpty docker exec -it product-postgres psql -U product -d product -f scripts/idempotent-migration.sql
+docker-compose -f compose.yml up --build -d property-postgres
+```
+
+```sh
+winpty docker exec -it property-postgres psql -U property -d property -f scripts/idempotent-migration.sql
 ```
 
 ![image](https://github.com/elmauro/product-service/assets/9219845/25c8a155-0aee-47d1-87d9-e5d2b7edac4b)
@@ -58,7 +61,7 @@ You can start the service using Visual Studio 2022 or Docker Compose
 **With Docker Compose**
 
 ```sh
-docker-compose -f compose.yml up --build -d product
+docker-compose -f compose.yml up --build -d property
 ```
 
 ![image](https://github.com/elmauro/product-service/assets/9219845/b737f711-ecd1-4a4b-9d03-4590d132775e)
