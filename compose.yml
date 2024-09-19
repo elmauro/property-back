@@ -1,0 +1,50 @@
+version: '3.7'
+
+# Setting up a network for our containers to talk to each other
+networks:
+  property-network:
+    driver: bridge
+
+# Creating a place to keep database data safe
+volumes:
+  postgresql-data-property:
+  shared-assets: # Define shared volume for assets
+    external: true
+
+# Describing the containers we want to run
+services:
+  # Property Service
+  # This container runs our main app, made from a Dockerfile.
+  property:
+    container_name: property
+    build:
+      dockerfile: Dockerfile
+      context: .
+    restart: unless-stopped
+    ports:
+      - 56510:56510
+    networks:
+    - property-network
+    environment:
+      ASPNETCORE_ENVIRONMENT: "DockerDev"
+    volumes:
+    - shared-assets:/app/wwwroot/assets # Mount the shared volume to your backend app
+
+  # Property PostgreSQL Database
+  # This container uses a PostgreSQL database to store data.
+  # We set it up with a username and password and make sure data is saved even if the container restarts.
+  property-postgres:
+    image: postgres:13
+    container_name: property-postgres
+    restart: unless-stopped
+    # Saves database data to a special place so we don't lose it when restarting the container.
+    volumes:
+      - postgresql-data-property:/var/lib/postgresql/data
+      - ./.db:/scripts
+    environment:
+      POSTGRES_USER: property
+      POSTGRES_PASSWORD: password
+    ports:
+      - "45432:5432"
+    networks:
+      - property-network
