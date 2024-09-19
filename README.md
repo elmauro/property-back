@@ -39,7 +39,7 @@ Before you begin, ensure that your system meets the following prerequisites:
 
 **Clone the repository**
 ```sh
-https://github.com/elmauro/property-service
+git clone https://github.com/elmauro/property-service
 ```
 
 Use Docker Compose to launch the database
